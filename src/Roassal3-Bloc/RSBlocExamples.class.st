@@ -13,6 +13,7 @@ RSBlocExamples class >> allExampleSelectors [
 
 { #category : #examples }
 RSBlocExamples >> example01Boxes [
+	<gtExample>
 	<script: 'self new example01Boxes open'>
 	
 	| c |
@@ -34,6 +35,7 @@ RSBlocExamples >> example01Boxes [
 
 { #category : #examples }
 RSBlocExamples >> example02EllipseAndCircle [
+	<gtExample>
 	<script: 'self new example02EllipseAndCircle open'>
 
 	| c |
@@ -56,6 +58,7 @@ RSBlocExamples >> example02EllipseAndCircle [
 
 { #category : #examples }
 RSBlocExamples >> example03RotatedBoxes [
+	<gtExample>
 	<script: 'self new example03RotatedBoxes open'>
 
 	| c |
@@ -91,6 +94,7 @@ RSBlocExamples >> example03RotatedBoxes [
 
 { #category : #examples }
 RSBlocExamples >> example04RotatedLabels [
+	<gtExample>
 	<script: 'self new example04RotatedLabels open'>
 
 	| c |
@@ -131,6 +135,7 @@ RSBlocExamples >> example04RotatedLabels [
 
 { #category : #examples }
 RSBlocExamples >> example05Ellipses [
+	<gtExample>
 	<script: 'self new example05Ellipses open'>
 
 	| c r y |
@@ -160,6 +165,7 @@ RSBlocExamples >> example05Ellipses [
 
 { #category : #examples }
 RSBlocExamples >> example06Polyline [
+	<gtExample>
 	<script: 'self new example06Polyline open'>
 
 	| c |
@@ -182,6 +188,7 @@ RSBlocExamples >> example06Polyline [
 
 { #category : #examples }
 RSBlocExamples >> example07MouseMove [
+	<gtExample>
 	<script: 'self new example07MouseMove open'>
 
 	| c size circles |
@@ -213,6 +220,7 @@ RSBlocExamples >> example07MouseMove [
 
 { #category : #examples }
 RSBlocExamples >> example08ZoomToFitWhenExtentChangedEvent [
+	<gtExample>
 	<script: 'self new example08ZoomToFitWhenExtentChangedEvent open'>
 
 	| canvas |
@@ -234,6 +242,7 @@ RSBlocExamples >> example08ZoomToFitWhenExtentChangedEvent [
 
 { #category : #examples }
 RSBlocExamples >> example09HierarchyWithCanvasController [
+	<gtExample>
 	<script: 'self new example09HierarchyWithCanvasController open'>
 
 	| canvas color shapes |
@@ -268,6 +277,7 @@ RSBlocExamples >> example09HierarchyWithCanvasController [
 
 { #category : #examples }
 RSBlocExamples >> example10BasicComposite [
+	<gtExample>
 	<script: 'self new example10BasicComposite open'>
 
 	| c com |
@@ -300,6 +310,7 @@ RSBlocExamples >> example10BasicComposite [
 
 { #category : #examples }
 RSBlocExamples >> example11SimpleClassHierarchy [
+	<gtExample>
 	<script: 'self new example11SimpleClassHierarchy open'>
 
 	| c methods |
@@ -336,6 +347,7 @@ RSBlocExamples >> example11SimpleClassHierarchy [
 
 { #category : #examples }
 RSBlocExamples >> example12Donna [
+	<gtExample>
     <script: 'self new example12Donna open'>
 
     | text canvas horizontal vertical groups count metricsProvider |
@@ -417,6 +429,7 @@ E di pensier
 
 { #category : #examples }
 RSBlocExamples >> example13Cluster [
+	<gtExample>
 	<script: 'self new example13Cluster open'>
 
 	| canvas shapes |
@@ -451,7 +464,7 @@ RSBlocExamples >> example13Cluster [
 			to: Color red;
 			shapes: shapes;
 			normalize: #numberOfMethods.
-		RSClusterLayout on: shapes.
+		RSClusterTreeLayout on: shapes.
 		RSComposite new
 			color: Color veryLightGray translucent;
 			model: scale;
@@ -469,6 +482,7 @@ RSBlocExamples >> example13Cluster [
 
 { #category : #examples }
 RSBlocExamples >> example14LabelExtent [
+	<gtExample>
 	<script: 'self new example14LabelExtent open'>
 
 	| canvas aString metricsProvider |
@@ -503,6 +517,7 @@ RSBlocExamples >> example14LabelExtent [
 
 { #category : #examples }
 RSBlocExamples >> example15BarPlot [
+	<gtExample>
 	<script: 'self new example15BarPlot open'>
 
 	| c p x y |
@@ -530,6 +545,7 @@ RSBlocExamples >> example15BarPlot [
 
 { #category : #examples }
 RSBlocExamples >> example16Histogram [
+	<gtExample>
 	<script: 'self new example16Histogram open'>
 
 	| x y canvas shapes |
@@ -564,6 +580,7 @@ RSBlocExamples >> example16Histogram [
 
 { #category : #examples }
 RSBlocExamples >> example17MouseMoveEllipse [
+	<gtExample>
 	<script: 'self new example17MouseMoveEllipse open'>
 	| c border circleResolution angle a b radius p |
 	c := RSCanvas new.
@@ -595,6 +612,7 @@ RSBlocExamples >> example17MouseMoveEllipse [
 
 { #category : #examples }
 RSBlocExamples >> example18MouseMoveLine [
+	<gtExample>
 	<script: 'self new example18MouseMoveLine open'>
  	| c rotate size angle |
 	c := RSCanvas new.
@@ -631,6 +649,7 @@ RSBlocExamples >> example18MouseMoveLine [
 
 { #category : #examples }
 RSBlocExamples >> example19Animation [
+	<gtExample>
 	<script: 'self new example19Animation open'>
 
 	| canvas label continueMessage pauseMessage |
@@ -862,6 +881,7 @@ RSBlocExamples >> example22AnimationOnRightClick [
 
 { #category : #examples }
 RSBlocExamples >> example23Flor [
+	<gtExample>
 	<script: 'self new example23Flor open'>
 	| c frame angleSp alphaS hueS dia1 dia2 |
 	c := RSCanvas new.
@@ -908,6 +928,7 @@ RSBlocExamples >> example23Flor [
 
 { #category : #examples }
 RSBlocExamples >> example24AnimationLinesInComposite [
+	<gtExample>
 	<script: 'self new example24AnimationLinesInComposite open'>
 	| canvas frame radius hueOffset angleSp shapes soffset size mult shape |
 	canvas := RSCanvas new.
@@ -973,6 +994,7 @@ RSBlocExamples >> example24AnimationLinesInComposite [
 
 { #category : #examples }
 RSBlocExamples >> example25Bitmap [
+	<gtExample>
 	<script: 'self new example25Bitmap open'>
 
 	| canvas shapes iconAssociations |
@@ -998,6 +1020,7 @@ RSBlocExamples >> example25Bitmap [
 
 { #category : #examples }
 RSBlocExamples >> example26Bezier [
+	<gtExample>
 	<script: 'self new example26Bezier open'>
 
 	| canvas |
@@ -1019,6 +1042,7 @@ RSBlocExamples >> example26Bezier [
 
 { #category : #examples }
 RSBlocExamples >> example27BezierAttachPoints [
+	<gtExample>
 	<script: 'self new example27BezierAttachPoints open'>
 
 	| canvas box1 box2 line |
@@ -1060,6 +1084,7 @@ RSBlocExamples >> example27BezierAttachPoints [
 
 { #category : #examples }
 RSBlocExamples >> example28BezierWithAnimation [
+	<gtExample>
 	<script: 'self new example28BezierWithAnimation open'>
 
 	| canvas size theta sc borderWhite cpController |
@@ -1118,6 +1143,7 @@ RSBlocExamples >> example28BezierWithAnimation [
 
 { #category : #examples }
 RSBlocExamples >> example29Polygon [
+	<gtExample>
 	<script: 'self new example29Polygon open'>
 
 	| canvas |
@@ -1149,6 +1175,7 @@ RSBlocExamples >> example29Polygon [
 
 { #category : #examples }
 RSBlocExamples >> example30EllipseWithLinearGradient [
+	<gtExample>
 	<script: 'self new example30EllipseWithLinearGradient open'>
 
 	| canvas gradient |
@@ -1173,6 +1200,7 @@ RSBlocExamples >> example30EllipseWithLinearGradient [
 
 { #category : #examples }
 RSBlocExamples >> example31PolygonWithLinearGradient [
+	<gtExample>
 	<script: 'self new example31PolygonWithLinearGradient open'>
 
 	| canvas polygon labels paint |
@@ -1221,6 +1249,7 @@ RSBlocExamples >> example31PolygonWithLinearGradient [
 
 { #category : #examples }
 RSBlocExamples >> example32FixedShape [
+	<gtExample>
 	<script: 'self new example32FixedShape open'>
 
 	| c box |
@@ -1247,6 +1276,7 @@ RSBlocExamples >> example32FixedShape [
 
 { #category : #examples }
 RSBlocExamples >> example33AnimatedLayout [
+	<gtExample>
 	<script: 'self new example33AnimatedLayout open'>
 
 	| c objects layout update labels shapes color |
@@ -1299,6 +1329,7 @@ RSBlocExamples >> example33AnimatedLayout [
 
 { #category : #examples }
 RSBlocExamples >> example34RSLocateWithMouseEvents [
+	<gtExample>
 	<script: 'self new example34RSLocateWithMouseEvents open'>
 	| canvas newBox updateText fixedElement movableElement buttons labeled locate label grad1 grad2 color |
 	canvas := RSCanvas new.
@@ -1392,6 +1423,7 @@ RSBlocExamples >> example34RSLocateWithMouseEvents [
 
 { #category : #examples }
 RSBlocExamples >> example35MouseEnterMouseLeave [
+	<gtExample>
 	<script: 'self new example35MouseEnterMouseLeave open'>
 	"Open Transcript to see the traced events. 
 	- Blue ellipse is over the box. 
