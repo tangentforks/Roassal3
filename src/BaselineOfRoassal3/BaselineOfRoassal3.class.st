@@ -105,9 +105,16 @@ BaselineOfRoassal3 >> corePackagesNames [
 ]
 
 { #category : #dependencies }
+BaselineOfRoassal3 >> blocRepository [
+	^ (RPackage organizer includesPackageNamed: #BaselineOfGToolkit)
+		ifTrue: [ 'github://feenkcom/Bloc/src']
+		ifFalse: [ 'github://pharo-graphics/Bloc:dev-1.0/src' ]
+]
+
+{ #category : #dependencies }
 BaselineOfRoassal3 >> dependencies: spec [
 	spec baseline: 'Bloc' with: [
-		spec repository: 'github://pharo-graphics/Bloc:dev-1.0/src' ].
+		spec repository: self blocRepository ].
 
 	spec baseline: 'AthensSVG' with: [
 		spec repository: 'github://pharo-contributions/Athens-SVG/src' ].
@@ -148,30 +155,24 @@ BaselineOfRoassal3 >> extraPackagesNames [
 BaselineOfRoassal3 >> registerPackages: spec [
 	"The packages to use, but not load"
 	spec package: #'Roassal3' with: [ spec requires: #('Geometry' 'NumericScales') ].
-	self corePackagesNames, 
-	self examplePackagesNames, 
-	self testPackagesNames, 
+	self corePackagesNames,
+	self examplePackagesNames,
+	self testPackagesNames,
 	self extraPackagesNames do: [ :name | spec package: name ].
-	
-	spec		
+
+	spec
 		package: #'Roassal3-Bloc' with: [ spec requires: #('Bloc') ];
+		package: #'Roassal3-GToolkit' with: [ spec requires: #('Roassal3-Bloc') ];
 
 		package: #'Roassal3-SVG' with: [ spec requires: #('Athens-SVG-PathConverter') ];
 		package: #'Roassal3-SVG-Tests';
 		package: #'Roassal3-SVG-Examples';
 		package: #'Roassal3-SVG-Importer' with: [ spec requires: #('AthensSVG') ].
-		
+
 	spec package: #'Roassal3-GraphViz' with: [ spec requires: #('OSSubprocess') ].
-	
+
 	spec package: #'Roassal3-Gtk'.
 	spec package: #'Roassal3-Spec-Gtk'.
-
-
-
-
-
-
-
 
 ]
 
@@ -191,6 +192,7 @@ BaselineOfRoassal3 >> roassalGroups: spec core: arr1 examples: arr2 tests: arr3 
 		group: 'Full' with: #('Mini'), self extraPackagesNames;
 		group: 'GraphViz' with: #('Full' 'Roassal3-GraphViz');
 		group: 'BlocFull' with: #('Full' 'Roassal3-Bloc');
+		group: 'GtFull' with: #('Roassal3-Bloc' 'Roassal3-Bloc');
 		group: 'default' with: #('Mini')
 ]
 
