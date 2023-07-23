@@ -105,16 +105,10 @@ BaselineOfRoassal3 >> corePackagesNames [
 ]
 
 { #category : #dependencies }
-BaselineOfRoassal3 >> blocRepository [
-	^ (RPackage organizer includesPackageNamed: #BaselineOfGToolkit)
-		ifTrue: [ 'github://feenkcom/Bloc/src']
-		ifFalse: [ 'github://pharo-graphics/Bloc:dev-1.0/src' ]
-]
-
-{ #category : #dependencies }
 BaselineOfRoassal3 >> dependencies: spec [
-	spec baseline: 'Bloc' with: [
-		spec repository: self blocRepository ].
+	"depend on bloc, but not if we're in GToolkit (which ships with bloc)"
+	(RPackage organizer includesPackageNamed: #BaselineOfGToolkit)
+		ifFalse: [ spec baseline: 'Bloc' with: 'github://pharo-graphics/Bloc:dev-1.0/src' ].
 
 	spec baseline: 'AthensSVG' with: [
 		spec repository: 'github://pharo-contributions/Athens-SVG/src' ].
@@ -192,7 +186,7 @@ BaselineOfRoassal3 >> roassalGroups: spec core: arr1 examples: arr2 tests: arr3 
 		group: 'Full' with: #('Mini'), self extraPackagesNames;
 		group: 'GraphViz' with: #('Full' 'Roassal3-GraphViz');
 		group: 'BlocFull' with: #('Full' 'Roassal3-Bloc');
-		group: 'GtFull' with: #('Roassal3-Bloc' 'Roassal3-Bloc');
+		group: 'GtFull' with: #('BlocFull');
 		group: 'default' with: #('Mini')
 ]
 
