@@ -106,9 +106,11 @@ BaselineOfRoassal3 >> corePackagesNames [
 
 { #category : #dependencies }
 BaselineOfRoassal3 >> dependencies: spec [
-	"depend on bloc, but not if we're in GToolkit (which ships with bloc)"
-	(RPackage organizer includesPackageNamed: #BaselineOfGToolkit)
-		ifFalse: [ spec baseline: 'Bloc' with: 'github://pharo-graphics/Bloc:dev-1.0/src' ].
+
+	self runningInGToolkit ifFalse: [
+		"GToolkit is built on a different bloc, which is already included."
+		spec baseline: 'Bloc' with: [
+			spec repository: 'github://pharo-graphics/Bloc:dev-1.0/src' ]].
 
 	spec baseline: 'AthensSVG' with: [
 		spec repository: 'github://pharo-contributions/Athens-SVG/src' ].
@@ -153,11 +155,12 @@ BaselineOfRoassal3 >> registerPackages: spec [
 	self examplePackagesNames,
 	self testPackagesNames,
 	self extraPackagesNames do: [ :name | spec package: name ].
+	
+	self runningInGToolkit
+		ifFalse: [ spec package: #'Roassal3-Bloc' with: [ spec requires: #('Bloc') ]].
+		"ifTrue:  [ spec package: #'Roassal3-GToolkit' with: [ spec requires: #('Roassal3-Bloc') ]]"
 
 	spec
-		package: #'Roassal3-Bloc' with: [ spec requires: #('Bloc') ];
-		package: #'Roassal3-GToolkit' with: [ spec requires: #('Roassal3-Bloc') ];
-
 		package: #'Roassal3-SVG' with: [ spec requires: #('Athens-SVG-PathConverter') ];
 		package: #'Roassal3-SVG-Tests';
 		package: #'Roassal3-SVG-Examples';
@@ -188,6 +191,11 @@ BaselineOfRoassal3 >> roassalGroups: spec core: arr1 examples: arr2 tests: arr3 
 		group: 'BlocFull' with: #('Full' 'Roassal3-Bloc');
 		group: 'GtFull' with: #('BlocFull');
 		group: 'default' with: #('Mini')
+]
+
+{ #category : #dependencies }
+BaselineOfRoassal3 >> runningInGToolkit [
+	^ RPackage organizer includesPackageNamed: #BaselineOfGToolkit
 ]
 
 { #category : #'API-packages' }
