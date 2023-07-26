@@ -157,8 +157,9 @@ BaselineOfRoassal3 >> registerPackages: spec [
 	self extraPackagesNames do: [ :name | spec package: name ].
 	
 	self runningInGToolkit
-		ifFalse: [ spec package: #'Roassal3-Bloc' with: [ spec requires: #('Bloc') ]].
-		"ifTrue:  [ spec package: #'Roassal3-GToolkit' with: [ spec requires: #('Roassal3-Bloc') ]]"
+		ifTrue:  [ spec package: #'Roassal3-GToolkit']
+		ifFalse: [ spec package: #'Roassal3-Bloc' with: [
+			spec requires: #('Bloc') ]].
 
 	spec
 		package: #'Roassal3-SVG' with: [ spec requires: #('Athens-SVG-PathConverter') ];
@@ -189,7 +190,7 @@ BaselineOfRoassal3 >> roassalGroups: spec core: arr1 examples: arr2 tests: arr3 
 		group: 'Full' with: #('Mini'), self extraPackagesNames;
 		group: 'GraphViz' with: #('Full' 'Roassal3-GraphViz');
 		group: 'BlocFull' with: #('Full' 'Roassal3-Bloc');
-		group: 'GtFull' with: #('BlocFull');
+		group: 'GtFull' with: #('Full' 'Roassal3-GToolkit');
 		group: 'default' with: #('Mini')
 ]
 
