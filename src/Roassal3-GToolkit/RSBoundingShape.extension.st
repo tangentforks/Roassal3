@@ -1,6 +1,6 @@
 Extension { #name : #RSBoundingShape }
 
-{ #category : #'*Roassal3-Bloc' }
+{ #category : #'*Roassal3-GToolkit' }
 RSBoundingShape >> asBlElement [
 
 	^ BlElement new
@@ -10,21 +10,21 @@ RSBoundingShape >> asBlElement [
 		  yourself
 ]
 
-{ #category : #'*Roassal3-Bloc' }
+{ #category : #'*Roassal3-GToolkit' }
 RSBoundingShape >> asBlGeometry [
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #'*Roassal3-Bloc' }
+{ #category : #'*Roassal3-GToolkit' }
 RSBoundingShape >> updateBlElement: aBlElement [
 
 "	aBlElement transformation: aBlElement transformation asElementTransformation.
 "	aBlElement
 		  size: self baseRectangle extent;
-		  transformDo: [ :aBuilder | 
+		  transformDo: [ :aBuilder |
 			  aBuilder transformation addTransformation:
-					  ((BlMatrixTransformation matrix: self matrix asBlMatrix) 
+					  ((BlMatrixTransformation matrix: self matrix asBlMatrix)
 						   origin: BlAffineTransformationCenterOrigin new).
 			  aBuilder translateBy: self baseRectangle extent / -2 ];
 		  border: self blBorder;

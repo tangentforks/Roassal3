@@ -1,6 +1,6 @@
 Extension { #name : #BlTransformationBuilder }
 
-{ #category : #'*Roassal3-Bloc' }
+{ #category : #'*Roassal3-GToolkit' }
 BlTransformationBuilder >> transformation [
 
 	^ affineCompositeTransformation

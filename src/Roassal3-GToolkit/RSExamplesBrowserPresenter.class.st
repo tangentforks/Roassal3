@@ -6,7 +6,7 @@ Class {
 		'visualization',
 		'examplesClass'
 	],
-	#category : #'Roassal3-Bloc-Examples'
+	#category : #'Roassal3-GToolkit-Examples'
 }
 
 { #category : #specs }
@@ -39,17 +39,17 @@ RSExamplesBrowserPresenter >> connectPresenters [
 	super connectPresenters.
 
 	examplesList
-		whenSelectionChangedDo: [ :aSelection | 
+		whenSelectionChangedDo: [ :aSelection |
 			self refreshAccordingToSelectedExample ];
-		whenActivatedDo: [ :aSelection | 
+		whenActivatedDo: [ :aSelection |
 			(examplesClass >> aSelection selectedItem) browse ]
 ]
 
 { #category : #initialization }
-RSExamplesBrowserPresenter >> initializePresenters [ 
+RSExamplesBrowserPresenter >> initializePresenters [
 
 	super initializePresenters.
-	
+
 	examplesList := self newList.
 	visualization := self instantiate: SpBlSpaceInMorphPresenter.
 
@@ -92,7 +92,7 @@ RSExamplesBrowserPresenter >> setModelBeforeInitialization: aClass [
 { #category : #initialization }
 RSExamplesBrowserPresenter >> showNullVisualization [
 
-	visualization space root 
+	visualization space root
 		removeChildren;
 		addChild: (BlElement new
 			 background: Color transparent;
@@ -105,7 +105,7 @@ RSExamplesBrowserPresenter >> showVisualizationFor: aSelector [
 	| aRSCanvas |
 	aRSCanvas := examplesClass new perform: aSelector.
 	aRSCanvas useBlocHost.
-	visualization space root 
+	visualization space root
 		removeChildren;
 		addChild: aRSCanvas host canvasElement
 ]

@@ -1,12 +1,12 @@
 Class {
 	#name : #RSBlocMetricProvider,
 	#superclass : #RSMetricsProvider,
-	#category : #'Roassal3-Bloc-Core'
+	#category : #'Roassal3-GToolkit-Core'
 }
 
 { #category : #hooks }
 RSBlocMetricProvider >> extentsOf: aRSLabel [
-	| paragraph line | 
+	| paragraph line |
 	paragraph := BlTextParagraph new
 		text: aRSLabel blRopedText;
 		yourself.

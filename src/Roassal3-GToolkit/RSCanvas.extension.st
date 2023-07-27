@@ -1,18 +1,18 @@
 Extension { #name : #RSCanvas }
 
-{ #category : #'*Roassal3-Bloc' }
+{ #category : #'*Roassal3-GToolkit' }
 RSCanvas >> host [
 
 	^ host
 ]
 
-{ #category : #'*Roassal3-Bloc' }
-RSCanvas >> updateBlElement: aRSCanvasElement [ 
-	
+{ #category : #'*Roassal3-GToolkit' }
+RSCanvas >> updateBlElement: aRSCanvasElement [
+
 	"TODO"
 ]
 
-{ #category : #'*Roassal3-Bloc' }
+{ #category : #'*Roassal3-GToolkit' }
 RSCanvas >> useBlocHost [
 
 	host := RSBlocHost new

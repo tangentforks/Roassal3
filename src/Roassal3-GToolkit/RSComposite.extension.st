@@ -1,11 +1,11 @@
 Extension { #name : #RSComposite }
 
-{ #category : #'*Roassal3-Bloc' }
+{ #category : #'*Roassal3-GToolkit' }
 RSComposite >> asBlElement [
 
 	| container |
 	container := super asBlElement
-		clipChildren: false;	
+		clipChildren: false;
 		yourself.
 
 	self children do: [:each |
@@ -17,7 +17,7 @@ RSComposite >> asBlElement [
 	^ container
 ]
 
-{ #category : #'*Roassal3-Bloc' }
+{ #category : #'*Roassal3-GToolkit' }
 RSComposite >> asBlGeometry [
 
 	^ BlRectangleGeometry new

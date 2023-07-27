@@ -1,6 +1,6 @@
 Extension { #name : #RSAbstractLine }
 
-{ #category : #'*Roassal3-Bloc' }
+{ #category : #'*Roassal3-GToolkit' }
 RSAbstractLine >> asBlElement [
 
 	^ self asBlGeometry asElement
@@ -9,13 +9,13 @@ RSAbstractLine >> asBlElement [
 		  yourself
 ]
 
-{ #category : #'*Roassal3-Bloc' }
+{ #category : #'*Roassal3-GToolkit' }
 RSAbstractLine >> asBlGeometry [
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #'*Roassal3-Bloc' }
+{ #category : #'*Roassal3-GToolkit' }
 RSAbstractLine >> updateBlElement: aBlElement [
 	"Update the element. Note: Unlike other shapes, the lines need to update the geometry."
 
@@ -27,7 +27,7 @@ RSAbstractLine >> updateBlElement: aBlElement [
 		background: self blPaint
 ]
 
-{ #category : #'*Roassal3-Bloc' }
+{ #category : #'*Roassal3-GToolkit' }
 RSAbstractLine >> updateBlGeometry: aBlGeometry [
 
 	self subclassResponsibility

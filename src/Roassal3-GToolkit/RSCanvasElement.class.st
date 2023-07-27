@@ -5,7 +5,7 @@ Class {
 		'roassalCanvas',
 		'elementListener'
 	],
-	#category : #'Roassal3-Bloc-Core'
+	#category : #'Roassal3-GToolkit-Core'
 }
 
 { #category : #'instance creation' }
@@ -23,7 +23,7 @@ RSCanvasElement >> initializeWithCanvas: aRSCanvas [
 
 	roassalCanvas := aRSCanvas.
 	elementListener := RSBlocEventListener newForCanvas: aRSCanvas.
-	
+
 	self
 		background: aRSCanvas color;
 		addAnimation: self newInfiniteCanvasAnimation;
@@ -39,7 +39,7 @@ RSCanvasElement >> initializeWithCanvas: aRSCanvas [
 
 { #category : #'refreshing - private' }
 RSCanvasElement >> newCameraElement [
-	"Answer a BlElement that has as children the representation of the regular RSShapes of a RSCanvas. 
+	"Answer a BlElement that has as children the representation of the regular RSShapes of a RSCanvas.
 	These are the regular shapes, that must be translated and scaled according to the camera."
 
 	^ (RSCameraElement newWithCanvas: roassalCanvas)
@@ -60,7 +60,7 @@ RSCanvasElement >> newInfiniteCanvasAnimation [
 
 	^ BlNumberTransition new
 		from: 0; to: 1;
-		onStepDo: [ :t | 
+		onStepDo: [ :t |
 			roassalCanvas playAnimations ];
 		beInfinite;
 		yourself.
@@ -81,14 +81,14 @@ RSCanvasElement >> roassalShape [
 
 { #category : #refreshing }
 RSCanvasElement >> signalUpdate [
-	"Request a redraw on the canvas. 
-	
-	Note 1: 
+	"Request a redraw on the canvas.
+
+	Note 1:
 	The redraw is not executed immediately/syncronously but instead, it's enqueued as a task in the mainElement. There are two cases then:
-	- If the mainElement has already been added as a child in a BlSpace, the task will be run in next universe pulse. 
+	- If the mainElement has already been added as a child in a BlSpace, the task will be run in next universe pulse.
 	- If it wasn't added to a space, the task will be enqueued in an internal BlTaskQueue until the element is added as a child in a BlSpace, and then first option will have course.
 
-	Note 2:	
+	Note 2:
 	As an optimization, multiple signalUpdate requests may be converted as a single redraw."
 
 
@@ -97,9 +97,9 @@ RSCanvasElement >> signalUpdate [
 	"Skip if the request is already done."
 "	signalUpdateRequested ifTrue: [ ^ self ].
 	signalUpdateRequested := true.
-	
+
 	self enqueueTask: (BlTaskAction new
-			 action: [ 
+			 action: [
 				 self syncSignalUpdate.
 				 signalUpdateRequested := false ];
 			 yourself)
@@ -121,7 +121,7 @@ RSCanvasElement >> syncSignalUpdateFirstTime [
 			self flag: #todo. "Workaround until camera element is converted into a layout "
 			each == cameraElement ifFalse: [
 				each addEventHandler: elementListener] ].
-		
+
 	roassalCanvas
 		when: RSShapeAddedEvent do: [ :evt |
 			| newChild |
@@ -129,7 +129,7 @@ RSCanvasElement >> syncSignalUpdateFirstTime [
 			newChild withAllChildrenBreadthFirstDo: [ :each |
 				each addEventHandler: elementListener].
 			self addChild: newChild ];
-		when: RSShapeRemovedEvent do: [ :evt | 
+		when: RSShapeRemovedEvent do: [ :evt |
 			self
 				allChildrenBreadthFirstDetect: [ :each |
 					each roassalShape == evt shape ]

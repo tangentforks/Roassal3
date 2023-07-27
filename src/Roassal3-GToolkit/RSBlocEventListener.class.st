@@ -4,12 +4,12 @@ Class {
 	#instVars : [
 		'roassalCanvas'
 	],
-	#category : #'Roassal3-Bloc-Events'
+	#category : #'Roassal3-GToolkit-Events'
 }
 
 { #category : #'instance creation' }
-RSBlocEventListener class >> newForCanvas: aRSHost [ 
-	
+RSBlocEventListener class >> newForCanvas: aRSHost [
+
 	^ self basicNew
 		initializeForCanvas: aRSHost;
 		yourself
@@ -31,7 +31,7 @@ RSBlocEventListener >> announceEventOfClass: aRSEventClass actionClass: anAction
 		shape: targetShape;
 		position: (self roassalPositionFor: aBlEvent);
 		yourself.
-		
+
 	targetShape announce: aRSEvent
 ]
 
@@ -50,9 +50,9 @@ RSBlocEventListener >> announceMouseEventOfClass: defaultClass ifLeftButton: lef
 
 	| roassalEventClass |
 	roassalEventClass := defaultClass.
-	aBlClickEvent primaryButtonPressed ifTrue: [ 
+	aBlClickEvent primaryButtonPressed ifTrue: [
 		roassalEventClass := leftButtonClass ].
-	aBlClickEvent secondaryButtonPressed ifTrue: [ 
+	aBlClickEvent secondaryButtonPressed ifTrue: [
 		roassalEventClass := rightButtonClass ].
 
 	self
@@ -64,7 +64,7 @@ RSBlocEventListener >> announceMouseEventOfClass: defaultClass ifLeftButton: lef
 { #category : #'mouse handlers' }
 RSBlocEventListener >> clickEvent: aBlEvent [
 
-	self 
+	self
 		announceMouseEventOfClass: RSMouseClick
 		ifLeftButton: RSMouseLeftClick
 		ifRightButton: RSMouseRightClick
@@ -83,8 +83,8 @@ RSBlocEventListener >> doubleClickEvent: aBlEvent [
 ]
 
 { #category : #initialization }
-RSBlocEventListener >> initializeForCanvas: aRSCanvas [ 
-	
+RSBlocEventListener >> initializeForCanvas: aRSCanvas [
+
 	self initialize.
 	roassalCanvas := aRSCanvas.
 

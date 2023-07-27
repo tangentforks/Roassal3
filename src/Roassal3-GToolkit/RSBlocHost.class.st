@@ -8,7 +8,7 @@ Class {
 		'space',
 		'canvasElement'
 	],
-	#category : #'Roassal3-Bloc-Core'
+	#category : #'Roassal3-GToolkit-Core'
 }
 
 { #category : #opening }

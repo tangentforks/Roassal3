@@ -1,6 +1,6 @@
 Extension { #name : #RSLabel }
 
-{ #category : #'*Roassal3-Bloc' }
+{ #category : #'*Roassal3-GToolkit' }
 RSLabel >> asBlElement [
 
 	^ BlTextElement new
@@ -10,34 +10,34 @@ RSLabel >> asBlElement [
 		  yourself
 ]
 
-{ #category : #'*Roassal3-Bloc' }
+{ #category : #'*Roassal3-GToolkit' }
 RSLabel >> asBlGeometry [
 	^ self shouldNotImplement
 ]
 
-{ #category : #'*Roassal3-Bloc' }
+{ #category : #'*Roassal3-GToolkit' }
 RSLabel >> blRopedText [
 
 	| result |
-	result := self text asRopedText 
+	result := self text asRopedText
 		foreground: self blPaint;
 		fontSize: self fontSize;
 		fontName: self fontName;
 		yourself.
-		
-	self isBold ifTrue: [ 
+
+	self isBold ifTrue: [
 		result bold ].
-	self isItalic ifTrue: [ 
+	self isItalic ifTrue: [
 		result italic ].
-	
-	self isUnderlined ifTrue: [ 
+
+	self isUnderlined ifTrue: [
 		result underline.
 		result underlineColor: self blPaint ].
-	
+
 	^ result
 ]
 
-{ #category : #'*Roassal3-Bloc' }
+{ #category : #'*Roassal3-GToolkit' }
 RSLabel >> updateBlElement: aBlElement [
 
 	aBlElement text: self blRopedText.
@@ -45,7 +45,7 @@ RSLabel >> updateBlElement: aBlElement [
 	"Force calculation of the extent"
 	aBlElement computeLayout.
 
-	aBlElement transformDo: [ :aBuilder | 
+	aBlElement transformDo: [ :aBuilder |
 		aBuilder transformation addTransformation:
 			((BlMatrixTransformation matrix: self matrix asBlMatrix) origin:
 				 BlAffineTransformationCenterOrigin new).
