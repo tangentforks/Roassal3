@@ -7,10 +7,10 @@ Class {
 { #category : #hooks }
 RSBlocMetricProvider >> extentsOf: aRSLabel [
 	| paragraph line |
-	paragraph := BlTextParagraph new
+	paragraph := BlSingleLineTextParagraph new
 		text: aRSLabel blRopedText;
 		yourself.
-	BlHostRenderer preferableClass offscreenMeasureTextParagraph: paragraph.
+	"BlHostRenderer preferableClass offscreenMeasureTextParagraph: paragraph."
 	line := paragraph line.
 	"ascent descent height baseline y"
 	^ RSTextExtents new
