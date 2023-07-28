@@ -109,7 +109,6 @@ RSCanvasElement >> signalUpdate [
 
 { #category : #refreshing }
 RSCanvasElement >> syncSignalUpdateFirstTime [
-
 	| cameraElement fixedElements |
 	cameraElement := self newCameraElement.
 	fixedElements := self newFixedShapeElements.
@@ -117,25 +116,26 @@ RSCanvasElement >> syncSignalUpdateFirstTime [
 	self
 		addChild: cameraElement;
 		addChildren: fixedElements;
-		allChildrenBreadthFirstDo: [ :each |
-			self flag: #todo. "Workaround until camera element is converted into a layout "
-			each == cameraElement ifFalse: [
-				each addEventHandler: elementListener] ].
+		allChildrenBreadthFirstDo: [ :each | 
+			self flag: #todo.	"Workaround until camera element is converted into a layout "
+			each == cameraElement ifFalse: [ each addEventHandler: elementListener ] ].
 
 	roassalCanvas
-		when: RSShapeAddedEvent do: [ :evt |
-			| newChild |
-			newChild := evt shape asBlElement.
-			newChild withAllChildrenBreadthFirstDo: [ :each |
-				each addEventHandler: elementListener].
-			self addChild: newChild ];
-		when: RSShapeRemovedEvent do: [ :evt |
-			self
-				allChildrenBreadthFirstDetect: [ :each |
-					each roassalShape == evt shape ]
-				ifFound: [ :element | element removeFromParent ]
-				ifNone: [ #syncSignalUpdateFirstTime traceCr. ] ].
-
+		when: RSShapeAddedEvent
+			do: [ :evt | 
+				| newChild |
+				newChild := evt shape asBlElement.
+				newChild
+					withAllChildrenBreadthFirstDo: [ :each | each addEventHandler: elementListener ].
+				self addChild: newChild ]
+			for: self;
+		when: RSShapeRemovedEvent
+			do: [ :evt | 
+				self
+					allChildrenBreadthFirstDetect: [ :each | each roassalShape == evt shape ]
+					ifFound: [ :element | element removeFromParent ]
+					ifNone: [ #syncSignalUpdateFirstTime traceCr ] ]
+			for: self
 ]
 
 { #category : #refreshing }
