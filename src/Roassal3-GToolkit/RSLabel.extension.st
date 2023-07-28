@@ -39,17 +39,18 @@ RSLabel >> blRopedText [
 
 { #category : #'*Roassal3-GToolkit' }
 RSLabel >> updateBlElement: aBlElement [
-
-	aBlElement text: self blRopedText.
-
-	"Force calculation of the extent"
+	aBlElement text: self blRopedText.	"Force calculation of the extent"
 	aBlElement computeLayout.
 
-	aBlElement transformDo: [ :aBuilder |
-		aBuilder transformation addTransformation:
+	aBlElement
+		transformDo: [ :aBuilder | 
+			aBuilder
+				matrix: self matrix asBlMatrix;
+				centerOrigin;
+				translateBy: aBlElement extent / -2	"aBuilder transformation addTransformation:
 			((BlMatrixTransformation matrix: self matrix asBlMatrix) origin:
 				 BlAffineTransformationCenterOrigin new).
-		aBuilder translateBy: aBlElement extent / -2 ].
+			aBuilder translateBy: aBlElement extent / -2" ].
 
 	^ aBlElement
 ]

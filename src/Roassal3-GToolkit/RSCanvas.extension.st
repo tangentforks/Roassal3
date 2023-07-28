@@ -6,7 +6,7 @@ RSCanvas >> gtLiveFor: aView [
 	^ aView explicit
 		title: 'Bloc';
 		priority: 100;
-		stencil: [self host canvasElement]
+		stencil: [self host canvasElement removeFromParent]
 ]
 
 { #category : #'*Roassal3-GToolkit' }
