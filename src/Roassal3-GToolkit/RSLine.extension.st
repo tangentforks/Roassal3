@@ -3,7 +3,7 @@ Extension { #name : #RSLine }
 { #category : #'*Roassal3-GToolkit' }
 RSLine >> asBlGeometry [
 
-	^ BlLineGeometry new
+	^ BlLine new
 ]
 
 { #category : #'*Roassal3-GToolkit' }

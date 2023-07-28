@@ -11,7 +11,7 @@ RSComposite >> asBlElement [
 	self children do: [:each |
 		| newChild |
 		newChild := each asBlElement.
-		newChild position: newChild position + (self baseRectangle extent / 2).
+		newChild relocate: newChild position + (self baseRectangle extent / 2).
 		container addChild: newChild ].
 
 	^ container
