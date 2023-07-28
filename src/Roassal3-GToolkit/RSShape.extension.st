@@ -11,7 +11,9 @@ RSShape >> asBlElement [
 { #category : #'*Roassal3-GToolkit' }
 RSShape >> blBorder [
 
-	^ self border ifNotNil: [ :b |
+	^ self border
+	 ifNil: [BlBorder empty]
+	 ifNotNil: [ :b |
 		  BlBorder paint: b paint width: b width ]
 ]
 
