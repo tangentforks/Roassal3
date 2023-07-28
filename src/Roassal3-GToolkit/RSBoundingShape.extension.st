@@ -18,15 +18,13 @@ RSBoundingShape >> asBlGeometry [
 
 { #category : #'*Roassal3-GToolkit' }
 RSBoundingShape >> updateBlElement: aBlElement [
-
-"	aBlElement transformation: aBlElement transformation asElementTransformation.
-"	aBlElement
+	aBlElement
 		  size: self baseRectangle extent;
-		  transformDo: [ :aBuilder |
-			  aBuilder transformation addTransformation:
-					  ((BlMatrixTransformation matrix: self matrix asBlMatrix)
-						   origin: BlAffineTransformationCenterOrigin new).
-			  aBuilder translateBy: self baseRectangle extent / -2 ];
+		  transformDo: [ :aTransform |
+			  aTransform
+			  	matrix: self matrix asBlMatrix;
+			  	centerOrigin;
+			  	translateBy: self baseRectangle extent / -2 ];
 		  border: self blBorder;
 		  background: self blPaint
 ]
