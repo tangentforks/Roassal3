@@ -529,22 +529,22 @@ RSBlocExamples >> example15BarPlot [
 	| c p x y |
 	x := 0.0 to: 2 count: 10.
 	y := (x raisedTo: 2) - 2.
-	c := RSChart new.
+	c := RSCompositeChart new.
 	p := RSBarPlot new x: x y: y.
 
-	c addPlot: p.
+	c add: p.
 
-	c addDecoration: (RSHorizontalTick new
+	c horizontalTick
 		doNotUseNiceLabel;
 		numberOfTicks: x size - 1;
-		asFloat).
+		asFloat.
 	c xlabel: 'X Axis'.
-	c addDecoration: (RSVerticalTick new
+	c verticalTick
 		numberOfTicks: 10;
-		asFloat).
+		asFloat.
 	c ylabel: 'Y Axis'.
 	c title: 'Histogram'.
-
+	c build.
 	c canvas useBlocHost.
 	^ c canvas
 ]
@@ -565,20 +565,19 @@ RSBlocExamples >> example16Histogram [
 		RSSturgesBinning new.
 	 } collect: [ :strat | | g c plot |
 		g := RSGroup new.
-		c := RSChart new.
+		c := RSCompositeChart new.
 		c container: g.
 		y := x collect: [ :v | strat computeNumberOfBinsFor: (Array new: v) ].
 		plot := RSLinePlot new x: x y: y.
-		c addPlot: plot.
-		c addDecoration: RSVerticalTick new doNotUseNiceLabel.
-		c addDecoration: RSHorizontalTick new.
+		c add: plot.
+		c verticalTick doNotUseNiceLabel.
 		c title: strat class name.
 		c build.
 		g asShapeFor: strat.
 		].
 	canvas addAll: shapes.
 	RSGridLayout on: canvas shapes.
-	canvas @ RSCanvasController.
+	"canvas @ RSCanvasController."
 
 	canvas useBlocHost.
 	^ canvas
